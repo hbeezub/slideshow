@@ -1,0 +1,56 @@
+\documentclass{beamer}
+
+\begin{document}
+
+\title{Comparison Barplots}
+\author{Charles Redmond}
+
+\begin{frame}
+  \titlepage
+\end{frame}
+
+\begin{frame}
+  \frametitle{Outline}
+    \tableofcontents
+\end{frame}
+
+\section{Install and Load Libraries}
+\begin{frame}[fragile]
+  \frametitle{Install and Load Libraries}
+    \begin{itemize}
+      \item<1->
+        <<warning=FALSE,message=FALSE>>=
+        library(dplyr)
+        @
+      \item<2->
+        <<warning=FALSE,message=FALSE>>=
+        library(tidytext)
+        @
+    \item<3->
+        <<warning=FALSE,message=FALSE>>=
+        library(gutenbergr)
+        @
+    \item<4->
+        <<warning=FALSE,message=FALSE>>=
+        library(ggplot2)
+        @
+    \item<5->
+        <<warning=FALSE,message=FALSE>>=
+        library(stringr)
+        @
+    
+    \end{itemize}
+\end{frame}
+
+\section{Access Project Gutenberg}
+\begin{frame}[fragile]
+  \frametitle{Access Project Gutenberg}
+    <<message=FALSE,warning=FALSE>>=
+    df<-gutenberg_works(str_detect(title,'Dracula'))
+    df$gutenberg_id
+    df$title
+    @
+\end{frame}
+
+
+\end{document}
