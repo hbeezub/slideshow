@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.15)  15 NOV 2017 12:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (MiKTeX 2.9.6350 64-bit) (preloaded format=pdflatex 2017.11.17)  17 NOV 2017 12:48
 entering extended mode
 **./slides.tex
 (slides.tex
@@ -923,6 +923,27 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
  (slides.vrb) [8
 
 ]
+\openout4 = `slides.vrb'.
+
+ (slides.vrb) [9
+
+]
+\openout4 = `slides.vrb'.
+
+ (slides.vrb) [10
+
+]
+\openout4 = `slides.vrb'.
+
+ (slides.vrb) [11
+
+]
+\openout4 = `slides.vrb'.
+
+
+(slides.vrb) [12
+
+]
 \tf@nav=\write6
 \openout6 = `slides.nav'.
 
@@ -932,29 +953,30 @@ LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10.95> not available
 \tf@snm=\write8
 \openout8 = `slides.snm'.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 138.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 138.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 240.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 240.
  (slides.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 138.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 138.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 240.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 240.
 Package rerunfilecheck Info: File `slides.out' has not changed.
-(rerunfilecheck)             Checksum: 9C01E555DED6F52E598F3CF165154117;122.
+(rerunfilecheck)             Checksum: 39C5E0397CF0E62FFC850140181E9360;328.
  ) 
 Here is how much of TeX's memory you used:
- 16983 strings out of 493323
- 324218 string characters out of 3139071
+ 17029 strings out of 493323
+ 324646 string characters out of 3139071
  399606 words of memory out of 3000000
- 20092 multiletter control sequences out of 15000+200000
- 10250 words of font info for 38 fonts, out of 3000000 for 9000
+ 20117 multiletter control sequences out of 15000+200000
+ 10418 words of font info for 39 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  56i,14n,55p,840b,555s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on slides.pdf (8 pages, 90355 bytes).
+<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmitt10.pfb><C:/P
+rogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss10.pfb><C:/Program F
+iles/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmss12.pfb><C:/Program Files/MiK
+TeX 2.9/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files/MiKTeX 2.9/
+fonts/type1/public/amsfonts/symbols/msam10.pfb>
+Output written on slides.pdf (12 pages, 123519 bytes).
 PDF statistics:
- 249 PDF objects out of 1000 (max. 8388607)
- 19 named destinations out of 1000 (max. 500000)
- 59 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 375 PDF objects out of 1000 (max. 8388607)
+ 31 named destinations out of 1000 (max. 500000)
+ 91 words of extra memory for PDF output out of 10000 (max. 10000000)
 
