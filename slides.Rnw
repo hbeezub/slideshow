@@ -1,9 +1,10 @@
 \documentclass{beamer}
+\usepackage{listings}
 
 \begin{document}
 
-\title{Comparison Barplots}
-\author{Charles Redmond}
+\title{The 9522: A python project}
+\author{Heidi Beezub}
 
 \begin{frame}
   \titlepage
@@ -32,7 +33,7 @@
         @
     \item<4->
         <<warning=FALSE,message=FALSE>>=
-        library(ggplot2)
+        library(PythonInR)
         @
     \item<5->
         <<warning=FALSE,message=FALSE>>=
@@ -42,29 +43,83 @@
     \end{itemize}
 \end{frame}
 
-\section{Access Project Gutenberg}
+\section{Background}
 \begin{frame}[fragile]
-  \frametitle{Access Project Gutenberg}
-    <<message=FALSE,warning=FALSE>>=
-    df<-gutenberg_works(str_detect(title,'Dracula'))
-    df$gutenberg_id
-    df$title
-    @
+  \frametitle{The 9522 and Rejects}
+  The DCM 9522 report is one of the reports I use in order to correct 'rejects' in my job.DCM stand for Department Cost Manager.  It includes multiple departments and all the products (both supplies & services) that each department provides.
+  
+  
+\textbf{What is a reject?}
+
+   A reject is data that the system collects but then cannot process or put into the correct category.  Rejects are typically a 'new' item that the simply needs the interface created or built in the system.  Sometimes this is an existing item that is either coming into the system in a new way.
+
 \end{frame}
 
-\section{Download Dracula}
+\section{Code for IP Number}
 \begin{frame}[fragile]
-  \frametitle{Download Dracula}
-    <<warning=FALSE,message=FALSE>>=
-    dracula<-gutenberg_download(345)
-    colnames(dracula)
-    substr(dracula$text[500],1,21)
-    @
+  \frametitle{Code for IP Number}
+  \lstinputlisting[language=Python]{9522_slide_IPNUM_only.py}
+   
+<<>>=
+def process_file(reader):
+    result_line= ''
+    result=''
+    slide="IPNUM" +'\n'
+    #first we need to add headers
+    with open('9522_slide_new.csv', 'a') as output_file:
+        output_file.write('"IPNUM"' +'\n')
+    for line in reader:
+        line=line.strip()    #removes leading/trailing whitespace
+        field = line.split()
+
+        if len(field)>3:
+            for i in range(0,2):
+                #find IPNUM
+                if field[i] == 'IP' and field[i+1] =='NUM':
+                    #save IPNUM
+                    ipnum=field[i+2].strip(':')
+                        #(last item before write to file)
+                        #when result has no data it is a blank line
+                    if result_line != None:
+                        with open('9522_slide_new.csv', 'a') as output_file:
+                            list_2_line=ipnum
+                            slide=slide+list_2_line+'\n'
+                            #print('list 2 line=',list_2_line)
+                            output_file.write(list_2_line+'\n')
+                            result=''
+                            list_2_line=''
+    print(slide)       
+if __name__ == '__main__':
+    with open('9522_slide.txt', 'r') as input_file:
+        process_file(input_file)
+@
+
+
+   
+   
+   
 \end{frame}
 %% Is this a comment?
 \section{Unpack the Words}
 \begin{frame}[fragile]
   \frametitle{Unpack the Words}
+  
+    
+   
+    <<message=FALSE,warning=FALSE>>=
+    df<-gutenberg_works(str_detect(title,'Dracula'))
+    df$gutenberg_id
+    df$title
+    @
+
+  
+    <<warning=FALSE,message=FALSE>>=
+    dracula<-gutenberg_download(345)
+    colnames(dracula)
+    substr(dracula$text[500],1,21)
+    @
+ 
+  
     <<>>=
     dracula_words<-dracula%>%
       unnest_tokens(word,text)

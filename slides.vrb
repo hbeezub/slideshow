@@ -1,22 +1,47 @@
-\frametitle{The Inner Join}
+\frametitle{Code for IP Number}
+  \lstinputlisting[language=Python]{9522_slide_IPNUM_only.py}
+
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-  \hlstd{dracula_words}\hlkwb{<-}\hlkwd{inner_join}\hlstd{(dracula_words,bing)}
+def \hlkwd{process_file}(reader):
+    result_line= \hlstr{''}
+    result=\hlstr{''}
+    slide=\hlstr{"IPNUM"} +\hlstr{'\textbackslash{}n'}
+\hlcom{    #first we need to add headers}
+    with \hlkwd{open}(\hlstr{'9522_slide_new.csv'}, \hlstr{'a'}) as output_file:
+        \hlkwd{output_file.write}(\hlstr{'\hlstr{"IPNUM"}'} +\hlstr{'\textbackslash{}n'})
+    for line in reader:
+        line=\hlkwd{line.strip}()    \hlcom{#removes leading/trailing whitespace}
+        field = \hlkwd{line.split}()
+
+        if \hlkwd{len}(field)>3:
+            for i in \hlkwd{range}(0,2):
+\hlcom{                #find IPNUM}
+                if field[i] == \hlstr{'IP'} and field[i+1] ==\hlstr{'NUM'}:
+\hlcom{                    #save IPNUM}
+                    ipnum=field[i+2]\hlkwd{.strip}(\hlstr{':'})
+\hlcom{                        #(last item before write to file)}
+\hlcom{                        #when result has no data it is a blank line}
+                    if result_line != None:
+                        with \hlkwd{open}(\hlstr{'9522_slide_new.csv'}, \hlstr{'a'}) as output_file:
+                            list_2_line=ipnum
+                            slide=slide+list_2_line+\hlstr{'\textbackslash{}n'}
+\hlcom{                            #print('list 2 line=',list_2_line)}
+                            \hlkwd{output_file.write}(list_2_line+\hlstr{'\textbackslash{}n'})
+                            result=\hlstr{''}
+                            list_2_line=\hlstr{''}
+    \hlkwd{print}(slide)
+if __name__ == \hlstr{'__main__'}:
+    with \hlkwd{open}(\hlstr{'9522_slide.txt'}, \hlstr{'r'}) as input_file:
+        \hlkwd{process_file}(input_file)
 \end{alltt}
 
 
-{\ttfamily\noindent\itshape\color{messagecolor}{\#\# Joining, by = "{}word"{}}}\begin{alltt}
-  \hlstd{dracula_words}\hlopt{$}\hlstd{gutenberg_id}\hlkwb{<-}\hlkwa{NULL}
-  \hlstd{dracula_words[}\hlnum{498}\hlopt{:}\hlnum{500}\hlstd{,]}
-\end{alltt}
-\begin{verbatim}
-## # A tibble: 3 x 2
-##      word sentiment
-##     <chr>     <chr>
-## 1   great  positive
-## 2    love  positive
-## 3 crowded  negative
-\end{verbatim}
-\end{kframe}
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: <text>:1:5: unexpected symbol\\\#\# 1: def process\_file\\\#\#\ \ \ \ \ \ \ \  \textasciicircum{}}}\end{kframe}
 \end{knitrout}
+
+
+
+
+

@@ -49,11 +49,12 @@
 \newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
 
 \usepackage{alltt}
+\usepackage{listings}
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
 \begin{document}
 
-\title{Comparison Barplots}
-\author{Charles Redmond}
+\title{The 9522: A python project}
+\author{Heidi Beezub}
 
 \begin{frame}
   \titlepage
@@ -96,7 +97,7 @@
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
-\hlkwd{library}\hlstd{(ggplot2)}
+\hlkwd{library}\hlstd{(PythonInR)}
 \end{alltt}
 \end{kframe}
 \end{knitrout}
@@ -112,9 +113,75 @@
     \end{itemize}
 \end{frame}
 
-\section{Access Project Gutenberg}
+\section{Background}
 \begin{frame}[fragile]
-  \frametitle{Access Project Gutenberg}
+  \frametitle{The 9522 and Rejects}
+  The DCM 9522 report is one of the reports I use in order to correct 'rejects' in my job.DCM stand for Department Cost Manager.  It includes multiple departments and all the products (both supplies & services) that each department provides.
+  
+  
+\textbf{What is a reject?}
+
+   A reject is data that the system collects but then cannot process or put into the correct category.  Rejects are typically a 'new' item that the simply needs the interface created or built in the system.  Sometimes this is an existing item that is either coming into the system in a new way.
+
+\end{frame}
+
+\section{Code for IP Number}
+\begin{frame}[fragile]
+  \frametitle{Code for IP Number}
+  \lstinputlisting[language=Python]{9522_slide_IPNUM_only.py}
+   
+\begin{knitrout}
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+def \hlkwd{process_file}(reader):
+    result_line= \hlstr{''}
+    result=\hlstr{''}
+    slide=\hlstr{"IPNUM"} +\hlstr{'\textbackslash{}n'}
+\hlcom{    #first we need to add headers}
+    with \hlkwd{open}(\hlstr{'9522_slide_new.csv'}, \hlstr{'a'}) as output_file:
+        \hlkwd{output_file.write}(\hlstr{'\hlstr{"IPNUM"}'} +\hlstr{'\textbackslash{}n'})
+    for line in reader:
+        line=\hlkwd{line.strip}()    \hlcom{#removes leading/trailing whitespace}
+        field = \hlkwd{line.split}()
+
+        if \hlkwd{len}(field)>3:
+            for i in \hlkwd{range}(0,2):
+\hlcom{                #find IPNUM}
+                if field[i] == \hlstr{'IP'} and field[i+1] ==\hlstr{'NUM'}:
+\hlcom{                    #save IPNUM}
+                    ipnum=field[i+2]\hlkwd{.strip}(\hlstr{':'})
+\hlcom{                        #(last item before write to file)}
+\hlcom{                        #when result has no data it is a blank line}
+                    if result_line != None:
+                        with \hlkwd{open}(\hlstr{'9522_slide_new.csv'}, \hlstr{'a'}) as output_file:
+                            list_2_line=ipnum
+                            slide=slide+list_2_line+\hlstr{'\textbackslash{}n'}
+\hlcom{                            #print('list 2 line=',list_2_line)}
+                            \hlkwd{output_file.write}(list_2_line+\hlstr{'\textbackslash{}n'})
+                            result=\hlstr{''}
+                            list_2_line=\hlstr{''}
+    \hlkwd{print}(slide)       
+if __name__ == \hlstr{'__main__'}:
+    with \hlkwd{open}(\hlstr{'9522_slide.txt'}, \hlstr{'r'}) as input_file:
+        \hlkwd{process_file}(input_file)
+\end{alltt}
+
+
+{\ttfamily\noindent\bfseries\color{errorcolor}{\#\# Error: <text>:1:5: unexpected symbol\\\#\# 1: def process\_file\\\#\#\ \ \ \ \ \ \ \  \textasciicircum{}}}\end{kframe}
+\end{knitrout}
+
+
+   
+   
+   
+\end{frame}
+%% Is this a comment?
+\section{Unpack the Words}
+\begin{frame}[fragile]
+  \frametitle{Unpack the Words}
+  
+    
+   
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -132,11 +199,8 @@
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-\end{frame}
 
-\section{Download Dracula}
-\begin{frame}[fragile]
-  \frametitle{Download Dracula}
+  
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
@@ -154,11 +218,8 @@
 \end{verbatim}
 \end{kframe}
 \end{knitrout}
-\end{frame}
-%% Is this a comment?
-\section{Unpack the Words}
-\begin{frame}[fragile]
-  \frametitle{Unpack the Words}
+ 
+  
 \begin{knitrout}
 \definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
 \begin{alltt}
